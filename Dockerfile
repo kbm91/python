@@ -1,14 +1,3 @@
-{{
-	def is_alpine:
-		env.variant | startswith("alpine")
-	;
-	def is_slim:
-		env.variant | startswith("slim-")
-	;
-	def rcVersion:
-		env.version | rtrimstr("-rc")
--}}
-{{ if is_alpine then ( -}}
 FROM alpine:{{ env.variant | ltrimstr("alpine") }}
 {{ ) elif is_slim then ( -}}
 FROM debian:{{ env.variant | ltrimstr("slim-") }}-slim
